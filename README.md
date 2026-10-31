@@ -57,6 +57,20 @@ Read the flights I left open in Kaze and add the cheapest to plan.md
 
 Disconnect any of them in Settings › External agents, and it stays disconnected.
 
+## Custom Agent endpoints
+
+Kaze's built-in Agent can use a custom OpenAI-compatible endpoint. Open **Settings › Agent › Add custom endpoint…** to configure it.
+
+For a local gateway such as Magpie:
+
+1. Start the gateway and confirm that it supports OpenAI Chat Completions with streaming and tool calls (function calling). Kaze calls `{base}/chat/completions`; it does not use the Responses API.
+2. Enter a **Name** and the gateway's OpenAI-compatible **Base URL**. For a server exposing `/v1/...` on port 3425, use `http://127.0.0.1:3425/v1`.
+3. Leave **API key** empty if the gateway does not require one; otherwise, enter its key.
+4. Leave **Models** empty to have Kaze fetch chat models from `{base}/models`, or enter model IDs manually.
+5. Select a model that supports tool calling and send a small browser task.
+
+To let an external agent control Kaze's signed-in tabs, open **Settings › External agents**. Use one-click **Connect** for a supported client, or copy the **MCP configuration** into another MCP client. Magpie is a model gateway; an agent that uses Magpie for its model connects to Kaze through this external-agent flow.
+
 ## Highlights
 
 | | |
