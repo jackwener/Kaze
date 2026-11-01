@@ -4,9 +4,10 @@
 
 # Kaze
 
-**一个安静、快速的 macOS 浏览器，内置一个在你的标签页里干活的 agent。**
+**一个安静、快速的浏览器，支持 macOS 和 Windows，内置一个在你的标签页里干活的 agent。**
 
 <a href="https://github.com/jackwener/Kaze/releases/latest"><img src="https://img.shields.io/github/v/release/jackwener/Kaze?style=for-the-badge&logo=apple&logoColor=white&label=%E4%B8%8B%E8%BD%BD%20macOS%20%E7%89%88&color=000000" alt="下载 macOS 版" /></a>
+<a href="https://github.com/jackwener/Kaze/releases/latest"><img src="https://img.shields.io/badge/%E4%B8%8B%E8%BD%BD%20Windows%20%E7%89%88-0078D4?style=for-the-badge&logo=windows&logoColor=white" alt="下载 Windows 版" /></a>
 <a href="https://kaze.build"><img src="https://img.shields.io/badge/%E4%B8%BB%E9%A1%B5-kaze.build-1E90FF?style=for-the-badge" alt="kaze.build" /></a>
 
 [English](README.md) · **简体中文**
@@ -25,9 +26,11 @@ Kaze 是一个可以天天用的浏览器，里面内置了 agent。你提一个
 
 ## 快速上手
 
-**1. 安装。** 在 [Releases](https://github.com/jackwener/Kaze/releases/latest) 下载 DMG：
-Apple 芯片用 `Kaze-<版本>-arm64.dmg`，Intel 用 `Kaze-<版本>.dmg`，把 Kaze 拖进“应用程序”。
-免费，不用注册账号，支持 macOS 13 及以上，会自动更新。
+**1. 安装。** 在 [Releases](https://github.com/jackwener/Kaze/releases/latest) 下载：
+- **Mac**：Apple 芯片用 `Kaze-<版本>-arm64.dmg`，Intel 用 `Kaze-<版本>.dmg`，把 Kaze 拖进“应用程序”。支持 macOS 13 及以上。
+- **Windows**：`Kaze-<版本>-win-x64.exe`，ARM 电脑用 `-win-arm64.exe`；只为当前用户安装，不需要管理员权限。支持 Windows 10 和 11。安装包暂未签名，第一次运行时 SmartScreen 会拦一下：点“更多信息 › 仍要运行”。
+
+免费，不用注册账号，会自动更新。
 
 **2. 搬过来。** 第一次打开时，Kaze 会问你要不要从 Chrome、Arc、Edge、Brave 或 Safari 搬来标签页、
 登录信息、书签、历史记录和扩展。选“要”，你登录过的网站在 Kaze 里照样是登录状态，agent 也一样。

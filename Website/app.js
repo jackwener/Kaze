@@ -22,8 +22,8 @@
     'nav.agent': '智能体', 'nav.tabs': '标签页', 'nav.translate': '翻译', 'nav.colour': '颜色', 'nav.privacy': '隐私',
     'cta.short': '下载',
     'hero.title': '你在浏览，<br>它在做事<span class="dot">。</span>',
-    'hero.sub': '安静、轻快的 macOS 浏览器。它的智能体在自己的标签页里做事，付款、发送或删除之前，一定先问你。',
-    'cta.download': '下载 macOS 版', 'cta.watch': '看它做事', 'cta.more': '选择下载版本', 'cta.arm': 'Apple 芯片', 'cta.intel': 'Intel', 'cta.all': '所有版本',
+    'hero.sub': '安静、轻快的浏览器，支持 macOS 和 Windows。它的智能体在自己的标签页里做事，付款、发送或删除之前，一定先问你。',
+    'cta.download': '下载 macOS 版', 'cta.watch': '看它做事', 'cta.more': '选择下载版本', 'cta.arm': 'Apple 芯片', 'cta.intel': 'Intel', 'cta.win': '下载 Windows 版', 'cta.winx64': 'Windows（x64）', 'cta.winarm': 'Windows（ARM）', 'cta.all': '所有版本',
     'works.from': '一键搬来', 'works.with': '也能借给这些 agent 用',
     'chap.agent': '订一张机票', 'chap.palette': '⌘K 面板', 'chap.translate': '翻译', 'chap.tidy': '整理标签页',
     'swatches.label': '窗口颜色',
@@ -31,15 +31,15 @@
     'eb.agent': '智能体', 'eb.tabs': '标签页', 'eb.tr': '翻译', 'eb.pal': '命令面板', 'eb.ads': '广告拦截', 'eb.colour': '颜色',
     'eb.imp': '换过来', 'eb.priv': '隐私', 'eb.agents': '你的其他 agent', 'eb.faq': '常见问题',
     'agents.title': 'Claude Code 也能用你的标签页。',
-    'agents.lead': 'Kaze 会找到你 Mac 上的 Claude Code、Codex、Cursor 等 agent，通过它的 MCP 服务器一次接好。它们在你真实的标签页里读和做事，用的是你的登录状态，每一步都像 Kaze 自己做的一样显示出来。',
+    'agents.lead': 'Kaze 会找到你电脑上的 Claude Code、Codex、Cursor 等 agent，通过它的 MCP 服务器一次接好。它们在你真实的标签页里读和做事，用的是你的登录状态，每一步都像 Kaze 自己做的一样显示出来。',
     'agents.note': '在设置里断开任何一个，它就一直保持断开。',
     'term.ask': '读一下我在 Kaze 里开着的航班，把最便宜的加进 plan.md',
     'term.r1': '「飞往里斯本的航班」里有 3 个标签页', 'term.r3': '已加入 11 月 20 日周五，TP1351，€97',
     'faq.title': '下载之前。',
     'faq.more': '还有别的问题？<a href="https://github.com/jackwener/Kaze/issues">在 GitHub 上问</a>。',
     'faq.q1.q': 'Kaze 免费吗？', 'faq.q1.a': '免费，也不用注册账号。智能体用你选的模型运行：用 ChatGPT 登录、填你自己的 API 密钥，或者接任何兼容 OpenAI 的接口。',
-    'faq.q2.q': '支持哪些 Mac？', 'faq.q2.a': 'macOS 13 及以上的 Mac。一开始就支持 Apple 芯片，Intel Mac 从 0.23 版开始支持。',
-    'faq.q3.q': '我浏览的内容会离开我的 Mac 吗？', 'faq.q3.a': '活动记录、历史和设置都留在你的 Mac 上。你交给智能体一件事时，它为这件事读到的内容会发给你选的模型，不会发到别处。',
+    'faq.q2.q': '支持哪些电脑？', 'faq.q2.a': 'macOS 13 及以上的 Mac（Apple 芯片和 Intel），以及 Windows 10 和 11 的电脑（x64 和 ARM，从 0.27 版开始）。',
+    'faq.q3.q': '我浏览的内容会离开我的电脑吗？', 'faq.q3.a': '活动记录、历史和设置都留在你的电脑上。你交给智能体一件事时，它为这件事读到的内容会发给你选的模型，不会发到别处。',
     'faq.q4.q': '智能体会做我没让它做的事吗？', 'faq.q4.a': '它在自己的标签页里做事，每一步都让你看见。付款、发送、删除或运行任何东西之前，它都会先问你。随时按 ⌘. 就能接管。',
     'faq.q5.q': '我的 Chrome 扩展能用吗？', 'faq.q5.a': '能。可以从 Chrome 一起搬过来，也可以从 Chrome 网上应用店装新的。',
     'faq.q6.q': '怎么更新？', 'faq.q6.a': 'Kaze 会自己检查新版本并更新。每个版本和更新说明都在 GitHub 上。',
@@ -84,9 +84,9 @@
     'imp.title': '一步，全部搬过来。',
     'imp.lead': '从 Chrome、Arc、Edge、Brave 或 Safari，带上你的标签页、登录信息、书签、历史记录和扩展。Chrome 扩展照常能用。',
     'imp.tabs': '打开的标签页', 'imp.logins': '登录信息', 'imp.bookmarks': '书签', 'imp.history': '历史记录', 'imp.ext': '扩展',
-    'priv.title': '用你自己的模型，数据留在你的 Mac 上。',
+    'priv.title': '用你自己的模型，数据留在你的电脑上。',
     'priv.1.t': '用你自己的模型', 'priv.1.p': '智能体用你选的模型、你自己的密钥运行。想换随时换。',
-    'priv.2.t': '本地优先', 'priv.2.p': '活动记录、历史和设置都存在你的 Mac 上，智能体也从那里回忆。',
+    'priv.2.t': '本地优先', 'priv.2.p': '活动记录、历史和设置都存在你的电脑上，智能体也从那里回忆。',
     'priv.3.t': 'English 和简体中文', 'priv.3.p': '整个应用，两种语言。',
     'close.title': '风过，事成。',
     'close.p': 'Kaze 是日语里的「風」。交给它一件事，看你的标签页自己动起来。',
@@ -162,6 +162,15 @@
     }
   };
 
+  /* A visitor on Windows: the main download button is the Windows installer
+     (x64; ARM from the menu), and the line under it says what that runs on. */
+  var onWindows = /Windows/.test(navigator.userAgent);
+  if (onWindows) $$('.dl-main').forEach(function (a) {
+    a.dataset.dl = 'win-x64';
+    var label = $('[data-i18n="cta.download"]', a);
+    if (label) { label.dataset.i18n = 'cta.win'; label.textContent = 'Download for Windows'; }
+  });
+
   var hashLang = new URLSearchParams(location.hash.slice(1)).get('lang');
   var lang = hashLang ? (hashLang === 'zh' ? 'zh' : 'en') : (root.lang === 'zh-CN' ? 'zh' : 'en');
   root.lang = lang === 'zh' ? 'zh-CN' : 'en';
@@ -199,20 +208,23 @@
     var md = $('meta[name="description"]');
     if (md) {
       if (!md.dataset.en) md.dataset.en = md.content;
-      md.content = l === 'zh' ? 'Kaze 是一款安静、轻快的 macOS 浏览器，内置智能体。它在自己的标签页里做事，每一步都让你看见，付款、发送或删除之前先问你。免费，适用于 Mac。' : md.dataset.en;
+      md.content = l === 'zh' ? 'Kaze 是一款安静、轻快的浏览器，支持 macOS 和 Windows，内置智能体。它在自己的标签页里做事，每一步都让你看见，付款、发送或删除之前先问你。免费。' : md.dataset.en;
     }
     paintMeta();
     if (typeof onLangChange === 'function') onLangChange();
   }
 
   /* The line under the download buttons: what the latest release really
-     is — its version, and Intel only once a release carries an x64 build. */
+     is — its version, and Intel only once a release carries an x64 build;
+     on Windows, Windows's. */
   var release = null;
   function paintMeta() {
     var zh = lang === 'zh', intel = release && release.intel;
-    var parts = zh
-      ? ['免费', 'macOS 13 及以上', intel ? 'Apple 芯片和 Intel' : 'Apple 芯片']
-      : ['Free', 'macOS 13 or later', intel ? 'Apple silicon and Intel' : 'Apple silicon'];
+    var parts = onWindows
+      ? (zh ? ['免费', 'Windows 10 和 11', 'x64 和 ARM'] : ['Free', 'Windows 10 and 11', 'x64 and ARM'])
+      : zh
+        ? ['免费', 'macOS 13 及以上', intel ? 'Apple 芯片和 Intel' : 'Apple 芯片']
+        : ['Free', 'macOS 13 or later', intel ? 'Apple silicon and Intel' : 'Apple silicon'];
     if (release && release.version) parts.push((zh ? '版本 ' : 'Version ') + release.version);
     $$('[data-meta]').forEach(function (el) { el.textContent = parts.join(' · '); });
   }
@@ -227,13 +239,18 @@
           intel: names.some(function (n) { return /\.dmg$/.test(n) && !/arm64/.test(n); })
         };
         paintMeta();
-        // The download buttons go straight to the DMG: Apple silicon by default, Intel from the menu.
-        var dmg = {};
+        // The download buttons go straight to the file: the Mac's DMG (Apple silicon by default,
+        // Intel from the menu) or Windows's installer (x64, ARM from the menu).
+        var file = {};
         (r.assets || []).forEach(function (a) {
-          if (/\.dmg$/.test(a.name)) dmg[/arm64/.test(a.name) ? 'arm64' : 'x64'] = a.browser_download_url;
+          if (/\.dmg$/.test(a.name)) file[/arm64/.test(a.name) ? 'arm64' : 'x64'] = a.browser_download_url;
+          var win = /-win-(x64|arm64)\.exe$/.exec(a.name);
+          if (win) file['win-' + win[1]] = a.browser_download_url;
         });
-        $$('[data-dl]').forEach(function (el) { if (dmg[el.dataset.dl]) el.href = dmg[el.dataset.dl]; });
-        $$('[data-dl="x64"]').forEach(function (el) { el.hidden = !dmg.x64; });
+        $$('[data-dl]').forEach(function (el) { if (file[el.dataset.dl]) el.href = file[el.dataset.dl]; });
+        ['x64', 'win-x64', 'win-arm64'].forEach(function (k) {
+          $$('.dl-menu [data-dl="' + k + '"]').forEach(function (el) { el.hidden = !file[k]; });
+        });
       })
       .catch(function () {});
   }

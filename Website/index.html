@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Kaze: the browser that works while you browse</title>
-<meta name="description" content="Kaze is a calm, quick macOS browser with an AI agent built in. It works in tabs of its own, shows you each step, and asks before it pays, sends or deletes anything. Free for Mac.">
+<meta name="description" content="Kaze is a calm, quick browser for macOS and Windows with an AI agent built in. It works in tabs of its own, shows you each step, and asks before it pays, sends or deletes anything. Free.">
 <link rel="canonical" href="https://kaze.build/">
 <meta name="theme-color" content="#C4D0EE">
 <meta name="color-scheme" content="light">
@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="Kaze">
 <meta property="og:url" content="https://kaze.build/">
 <meta property="og:title" content="Kaze: the browser that works while you browse">
-<meta property="og:description" content="A calm macOS browser with an agent that works in tabs of its own, and asks before it pays, sends or deletes.">
+<meta property="og:description" content="A calm browser for macOS and Windows with an agent that works in tabs of its own, and asks before it pays, sends or deletes.">
 <meta property="og:image" content="https://kaze.build/og.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
@@ -22,7 +22,7 @@
 <meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kaze: the browser that works while you browse">
-<meta name="twitter:description" content="A calm macOS browser with an agent that works in tabs of its own, and asks before it pays, sends or deletes.">
+<meta name="twitter:description" content="A calm browser for macOS and Windows with an agent that works in tabs of its own, and asks before it pays, sends or deletes.">
 <meta name="twitter:image" content="https://kaze.build/og.jpg">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -41,7 +41,7 @@
   })();
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Kaze","operatingSystem":"macOS 13 or later","applicationCategory":"BrowserApplication","description":"A calm, quick macOS browser with an AI agent built in.","url":"https://kaze.build/","downloadUrl":"https://github.com/jackwener/Kaze/releases/latest","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":["en","zh-CN"],"image":"https://kaze.build/icon-512.png"}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Kaze","operatingSystem":"macOS 13 or later, Windows 10 or later","applicationCategory":"BrowserApplication","description":"A calm, quick browser for macOS and Windows with an AI agent built in.","url":"https://kaze.build/","downloadUrl":"https://github.com/jackwener/Kaze/releases/latest","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"inLanguage":["en","zh-CN"],"image":"https://kaze.build/icon-512.png"}
 </script>
 </head>
 <body>
@@ -121,7 +121,7 @@
     <div class="hero-in">
       <img class="hero-icon" src="icon.svg" width="64" height="64" alt="Kaze app icon: a pinwheel of three translucent petals">
       <h1 id="hero-title" data-i18n-html="hero.title">The browser that works<br>while you browse<span class="dot">.</span></h1>
-      <p class="hero-sub" data-i18n="hero.sub">A calm, quick browser for macOS. Its agent works in tabs of its own and asks before it pays, sends or deletes anything.</p>
+      <p class="hero-sub" data-i18n="hero.sub">A calm, quick browser for macOS and Windows. Its agent works in tabs of its own and asks before it pays, sends or deletes anything.</p>
       <div class="hero-cta">
         <div class="dl" data-dl-split>
           <a class="btn btn-glass btn-lg dl-main" data-dl="arm64" href="https://github.com/jackwener/Kaze/releases/latest">
@@ -134,6 +134,8 @@
           <div class="dl-menu" role="menu" hidden>
             <a role="menuitem" data-dl="arm64" href="https://github.com/jackwener/Kaze/releases/latest"><span data-i18n="cta.arm">Apple silicon</span></a>
             <a role="menuitem" data-dl="x64" href="https://github.com/jackwener/Kaze/releases/latest"><span data-i18n="cta.intel">Intel</span></a>
+            <a role="menuitem" data-dl="win-x64" href="https://github.com/jackwener/Kaze/releases/latest"><span data-i18n="cta.winx64">Windows (x64)</span></a>
+            <a role="menuitem" data-dl="win-arm64" href="https://github.com/jackwener/Kaze/releases/latest"><span data-i18n="cta.winarm">Windows (ARM)</span></a>
             <a role="menuitem" href="https://github.com/jackwener/Kaze/releases" data-i18n="cta.all">All releases</a>
           </div>
         </div>
@@ -345,7 +347,7 @@
       <div class="split-text">
         <p class="eyebrow" data-i18n="eb.agents">Your other agents</p>
         <h2 id="agents-title" data-i18n="agents.title">Claude Code can use your tabs, too.</h2>
-        <p data-i18n="agents.lead">Kaze finds Claude Code, Codex, Cursor and the other agents on your Mac and connects them once, through its MCP server. They read and work in your real tabs, signed in as you, and every step shows in Kaze like its own.</p>
+        <p data-i18n="agents.lead">Kaze finds Claude Code, Codex, Cursor and the other agents on your computer and connects them once, through its MCP server. They read and work in your real tabs, signed in as you, and every step shows in Kaze like its own.</p>
         <p class="band-note" data-i18n="agents.note">Disconnect any of them in Settings, and it stays disconnected.</p>
       </div>
       <div class="split-viz">
@@ -520,7 +522,7 @@
   <section class="sec" id="privacy" aria-labelledby="priv-title">
     <div class="sec-head">
       <p class="eyebrow" data-i18n="eb.priv">Privacy</p>
-      <h2 id="priv-title" data-i18n="priv.title">It runs on your models and stays on your Mac.</h2>
+      <h2 id="priv-title" data-i18n="priv.title">It runs on your models and stays on your computer.</h2>
     </div>
     <div class="grid3">
       <article class="mini big">
@@ -531,7 +533,7 @@
       <article class="mini big">
         <span class="ctile ct-red" aria-hidden="true"><svg><use href="#g-local"/></svg></span>
         <h3 data-i18n="priv.2.t">Local-first</h3>
-        <p data-i18n="priv.2.p">Activity, history and settings live on your Mac. The agent recalls them from there.</p>
+        <p data-i18n="priv.2.p">Activity, history and settings live on your computer. The agent recalls them from there.</p>
       </article>
       <article class="mini big">
         <span class="ctile ct-blue" aria-hidden="true"><svg><use href="#g-lang"/></svg></span>
@@ -555,12 +557,12 @@
           <p data-i18n="faq.q1.a">Yes. Kaze is free and needs no account. The agent runs on a model you choose: sign in with ChatGPT, use your own API key, or point it at any OpenAI-compatible endpoint.</p>
         </details>
         <details>
-          <summary data-i18n="faq.q2.q">Which Macs does it run on?</summary>
-          <p data-i18n="faq.q2.a">Any Mac on macOS 13 or later. Apple silicon from the start, and Intel Macs from version 0.23.</p>
+          <summary data-i18n="faq.q2.q">Which computers does it run on?</summary>
+          <p data-i18n="faq.q2.a">Macs on macOS 13 or later, Apple silicon and Intel; and Windows 10 or 11 PCs, x64 and ARM, from version 0.27.</p>
         </details>
         <details>
-          <summary data-i18n="faq.q3.q">Does what I browse leave my Mac?</summary>
-          <p data-i18n="faq.q3.a">Your activity, history and settings stay on your Mac. When you ask the agent for something, what it reads for that task goes to the model you picked, and nowhere else.</p>
+          <summary data-i18n="faq.q3.q">Does what I browse leave my computer?</summary>
+          <p data-i18n="faq.q3.a">Your activity, history and settings stay on your computer. When you ask the agent for something, what it reads for that task goes to the model you picked, and nowhere else.</p>
         </details>
         <details>
           <summary data-i18n="faq.q4.q">Will the agent do things I didn't ask for?</summary>
@@ -596,6 +598,8 @@
           <div class="dl-menu" role="menu" hidden>
             <a role="menuitem" data-dl="arm64" href="https://github.com/jackwener/Kaze/releases/latest"><span data-i18n="cta.arm">Apple silicon</span></a>
             <a role="menuitem" data-dl="x64" href="https://github.com/jackwener/Kaze/releases/latest"><span data-i18n="cta.intel">Intel</span></a>
+            <a role="menuitem" data-dl="win-x64" href="https://github.com/jackwener/Kaze/releases/latest"><span data-i18n="cta.winx64">Windows (x64)</span></a>
+            <a role="menuitem" data-dl="win-arm64" href="https://github.com/jackwener/Kaze/releases/latest"><span data-i18n="cta.winarm">Windows (ARM)</span></a>
             <a role="menuitem" href="https://github.com/jackwener/Kaze/releases" data-i18n="cta.all">All releases</a>
           </div>
         </div>
