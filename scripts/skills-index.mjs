@@ -13,6 +13,10 @@ const source = join(root, 'skills')
 const target = join(root, 'Website', 'skills')
 const ID = /^[a-z0-9][a-z0-9-]{0,63}$/
 const MAX = 64 * 1024
+// A skill's icon, next to its SKILL.md (the first of these it has), inlined in the index as a
+// data URL: Kaze shows it on the skill's card instead of guessing at its site's /favicon.ico.
+const ICONS = { 'icon.png': 'image/png', 'icon.svg': 'image/svg+xml', 'icon.webp': 'image/webp' }
+const MAX_ICON = 32 * 1024
 
 /** The frontmatter fields Kaze reads: strings, and `sites` as a list. */
 function frontmatter(text, file) {
@@ -59,6 +63,13 @@ for (const id of readdirSync(source).sort()) {
   const content = readFileSync(file, 'utf8')
   if (Buffer.byteLength(content) > MAX) throw new Error(`skills/${id}/SKILL.md: over ${MAX / 1024} KB`)
   const meta = frontmatter(content, `skills/${id}/SKILL.md`)
+  const iconFile = Object.keys(ICONS).find((f) => existsSync(join(source, id, f)))
+  let icon
+  if (iconFile) {
+    const bytes = readFileSync(join(source, id, iconFile))
+    if (bytes.length > MAX_ICON) throw new Error(`skills/${id}/${iconFile}: over ${MAX_ICON / 1024} KB`)
+    icon = `data:${ICONS[iconFile]};base64,${bytes.toString('base64')}`
+  }
   skills.push({
     id,
     name: meta.name,
@@ -66,6 +77,7 @@ for (const id of readdirSync(source).sort()) {
     ...(Array.isArray(meta.sites) && meta.sites.length ? { sites: meta.sites } : {}),
     ...(typeof meta.start_url === 'string' && meta.start_url ? { start_url: meta.start_url } : {}),
     ...(meta.kind === 'task' || meta.kind === 'site' ? { kind: meta.kind } : {}),
+    ...(icon ? { icon } : {}),
     updated: updated(`skills/${id}/SKILL.md`),
     sha256: createHash('sha256').update(content).digest('hex'),
     content

@@ -20,3 +20,7 @@ its own way of writing files.
 A skill merged into this folder is in the market at the next deploy of kaze.build — no Kaze release
 needed (`node scripts/skills-index.mjs` builds `kaze.build/skills/index.json` from it; run it to check a
 new skill). To suggest one, open a pull request with its folder.
+
+A skill about a site can bring the site's icon as `icon.png` (or `.svg`, `.webp`; at most 32 KB, 64×64
+is plenty) next to its `SKILL.md`: Kaze shows it on the skill's card. Without one the card shows the
+book glyph.
