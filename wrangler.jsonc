@@ -3,6 +3,10 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "kaze-website",
   "compatibility_date": "2026-10-19",
+  // The skills market (skills/ → Website/skills/, index.json) is built before each deploy.
+  "build": {
+    "command": "node scripts/skills-index.mjs"
+  },
   "assets": {
     "directory": "Website"
   },
