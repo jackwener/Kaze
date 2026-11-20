@@ -26,6 +26,43 @@ you while it works. A built-in or cloud browser leaves you signed out of everyth
 browser often doesn't make a good everyday browser. Kaze is built to be both: a real browser for
 you, and a workspace for agents that never gets in your way.
 
+## What you can hand it
+
+Kaze's agent works with the logins already in your browser, so the things you'd otherwise click
+through page by page take one sentence. Copy any of these and try it.
+
+**Post for you** (it shows you exactly what it will post and waits for your OK)
+
+| To | Ask |
+|---|---|
+| Post on Xiaohongshu (RedNote) | `Write a 300-word caption for these 6 photos on my desktop and post them as a Xiaohongshu note` |
+| Check a note before it goes out | `Run my draft through the Xiaohongshu limit check and fix what it flags` |
+| Post on X | `Turn the key points of this blog post into a thread and post it on my X` |
+| Post on Douyin (TikTok China) | `Post the newest video in Downloads to Douyin with a title and three hashtags` |
+| One post, every platform | `Rewrite this for Xiaohongshu, Weibo and X in each one's style and post all three` |
+
+**Get your own data back**
+
+| To | Ask |
+|---|---|
+| Every Alipay bill | `Export all my Alipay bills to a spreadsheet and show where the money went each month` |
+| Every JD order | `Export every JD order I've ever placed to CSV` |
+| Taobao orders | `Put what I bought on Taobao this year in a table, totals by category` |
+| A year of spending | `Combine this year's Alipay, JD and Taobao spending into one annual summary` |
+
+**Everyday chores**
+
+| To | Ask |
+|---|---|
+| Compare prices | `What do these headphones cost on JD, Taobao and Pinduoduo, with coupons and shipping?` |
+| Something every morning | `Every morning at 8, list the Hacker News posts about AI` |
+| Keep a page | `Save this page as Markdown` |
+
+Anything it has done once can be saved as a skill and done again in one sentence. The
+[skills market](skills) already has some: the [Xiaohongshu limit check](skills/xiaohongshu-limit-check/SKILL.md),
+[JD order export](skills/export-jd-orders/SKILL.md) and [Alipay bill export](skills/export-alipay-bills/SKILL.md),
+one click to add in Kaze's Skills › Market.
+
 ## Quick start
 
 **1. Install.** From [Releases](https://github.com/jackwener/Kaze/releases/latest):
@@ -93,7 +130,7 @@ To let an external agent control Kaze's signed-in tabs, open **Settings › Exte
 | | |
 |---|---|
 | [Releases](https://github.com/jackwener/Kaze/releases) | Kaze's builds and release notes |
-| [`skills/`](skills) | The skills Kaze ships with, in the Agent Skills format |
+| [`skills/`](skills) | The skills market: what Kaze lists in Skills › Market, in the Agent Skills format; pull requests welcome |
 | [`Website/`](Website) | The homepage, [kaze.build](https://kaze.build) (static files, deployed with `npx wrangler deploy`) |
 
 Kaze's browser tools come from [BrowserMCP](https://github.com/jackwener/BrowserMCP) (Apache-2.0),

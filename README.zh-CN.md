@@ -24,6 +24,42 @@ Kaze 是一个可以天天用的浏览器，里面内置了 agent。你提一个
 哪个网站都没登录；用 AI 浏览器，又常常不适合天天用。Kaze 想两头都做好：对你是一个真正的浏览器，
 对 agent 是一个不会挡你路的工作区。
 
+## 它能帮你做什么
+
+Kaze 的 agent 用的就是你自己浏览器里的登录状态，所以平时要你一页页点的事，交给它一句话就行。下面每一句都可以直接复制去试。
+
+**替你发内容**（发出去之前，它会把要发的内容摆给你确认）
+
+| 想做的事 | 对 agent 说 |
+|---|---|
+| 发小红书 | `把桌面上这 6 张图配一段 300 字的文案，发成小红书笔记，标题你来起` |
+| 发前防限流自检 | `按「小红书防限流自检」把这篇草稿过一遍，有问题直接改好` |
+| 发推 | `把这篇博客的要点写成一条 thread，发到我的 X 上` |
+| 发抖音 | `把下载文件夹里最新的视频发到抖音，配上标题和三个话题` |
+| 一稿多发 | `这段话分别改成小红书、微博和 X 的风格，三个平台都发一遍` |
+
+**把你自己的数据拿回来**
+
+| 想做的事 | 对 agent 说 |
+|---|---|
+| 支付宝全部账单 | `把我支付宝的全部账单导出成表格，再按月算一下花在哪儿了` |
+| 京东全部订单 | `把我京东从注册到现在的所有订单导出成 CSV` |
+| 淘宝订单 | `把我今年在淘宝买的东西整理成一张表，按类目汇总金额` |
+| 一年花销总结 | `把支付宝、京东、淘宝今年的花销合在一起，做一份年度消费总结` |
+
+**每天的杂事**
+
+| 想做的事 | 对 agent 说 |
+|---|---|
+| 比价 | `这款耳机在京东、淘宝、拼多多分别多少钱，算上券和运费` |
+| 定时整理 | `每天早上 8 点把 Hacker News 和 AI 相关的帖子整理成一份清单` |
+| 存网页 | `把这个页面存成 Markdown` |
+
+这些事做过一次，就可以存成 Skill，下次一句话就能再来一遍。[Skill 市场](skills)里已经有现成的：
+[小红书防限流自检](skills/xiaohongshu-limit-check/SKILL.md)、
+[导出京东消费记录](skills/export-jd-orders/SKILL.md)、
+[导出支付宝全部账单](skills/export-alipay-bills/SKILL.md)，在 Kaze 的 Skills › 市场 里一键添加。
+
 ## 快速上手
 
 **1. 安装。** 在 [Releases](https://github.com/jackwener/Kaze/releases/latest) 下载：
@@ -85,7 +121,7 @@ Kaze 内置的 Agent 可以使用自定义的 OpenAI 兼容接口。打开“设
 | | |
 |---|---|
 | [Releases](https://github.com/jackwener/Kaze/releases) | Kaze 的安装包和更新说明 |
-| [`skills/`](skills) | Kaze 自带的技能，Agent Skills 格式 |
+| [`skills/`](skills) | Skill 市场：Kaze 里 Skills › 市场 列出的 Skill，Agent Skills 格式；欢迎提 PR 上架 |
 | [`Website/`](Website) | 主页 [kaze.build](https://kaze.build)（纯静态文件，用 `npx wrangler deploy` 发布） |
 
 Kaze 的浏览器能力来自 [BrowserMCP](https://github.com/jackwener/BrowserMCP)（Apache-2.0）：一个开源
