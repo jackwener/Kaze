@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "generated": "2026-11-20T10:22:18.662Z",
+  "skills": [
+    {
+      "id": "export-alipay-bills",
+      "name": "导出支付宝全部账单",
+      "description": "当用户要把支付宝的历史账单/消费记录全部导出成表格（或据此做消费分析）时使用。",
+      "sites": [
+        "alipay.com",
+        "consumeprod.alipay.com"
+      ],
+      "start_url": "https://consumeprod.alipay.com/record/standard.htm",
+      "kind": "task",
+      "updated": "2026-11-20T10:22:18.645Z",
+      "sha256": "89883b0c64702e3d0ad721d59c7016796aeeff91fbf0cba237658a1b41c64e05",
+      "content": "---\nname: 导出支付宝全部账单\ndescription: 当用户要把支付宝的历史账单/消费记录全部导出成表格（或据此做消费分析）时使用。\nstart_url: https://consumeprod.alipay.com/record/standard.htm\nsites:\n  - alipay.com\n  - consumeprod.alipay.com\nkind: task\n---\n\n先把前提一条条核过，缺一条就停下来问用户，别硬跑：\n1. 账单页（consumeprod.alipay.com/record/standard.htm 或 advanced.htm）的登录态必须在一个我能控制的标签里。用户从别的窗口附上来的标签，我能 read_tab 读文字却驱动不了——用 browser.tabs.new 开自己的标签去同一地址，若被跳到 auth.alipay.com，就让用户在这个标签里扫码登录一次，这是唯一需要他动手的地方，不要索要账号密码。\n2. 页头是「你好，XXX」，确认是用户本人；有多个支付宝账号先问清导哪个。\n3. 问清范围（默认全部；或最近 1 个月/1 年/某一年）和要 CSV 还是要分析结论。\n4. 记下页脚「共 N 条」，它是后面校验完整性的唯一标准。\n\n抓取流程：\n1. 在该标签开网络录制，然后在账单页点一次「下一页」。从录到的请求里取那条账单接口的完整 URL（/record/standard.htm 或同名 .json，参数形如 pageNum / status / category / dateRange）——原样复用这串，只改页码，别自己拼参数。\n2. 在页面里用这串 URL 发 fetch，pageNum 从 1 递增，每页 10 条，翻到覆盖「共 N 条」为止；按流水号去重（翻页越界会重复返回末页数据）。\n3. 别在一次 evaluate 里跑完几百页（默认 10s 超时会被打断）：先把拉取函数装进 window，每次只跑 20~30 页，返回已拉条数当进度。\n4. 若某个时间段拉不到（简版账单有保留期），改用「对账单」或按年分段再拉，不要凭空补数据。\n\n导出与汇报：\n1. 一个 CSV 就够：时间、名称、对方、金额、状态、流水号；带 \\ufeff BOM，金额保持两位小数字符串（支出为负、退款和收入为正）。\n2. 退款是独立一行，统计支出时剔除，否则会重复计；报总数要和「共 N 条」对上，对不上就说明哪段缺了。\n3. 汇报口径：总条数、时间跨度、支出合计、退款合计、Top 几个商户；不要动用户原来那个账单标签。\n"
+    },
+    {
+      "id": "export-jd-orders",
+      "name": "导出京东消费记录",
+      "description": "当用户要把京东的历史订单/消费记录全部导出成表格（或据此做消费分析）时使用。",
+      "sites": [
+        "order.jd.com",
+        "order.jd.hk",
+        "jd.com"
+      ],
+      "start_url": "https://order.jd.hk/center/list.action",
+      "kind": "task",
+      "updated": "2026-11-20T10:22:18.652Z",
+      "sha256": "39a9f34d3d1924349ead76ab094dafedb5d838bfae8a9f4593a7a7386b322965",
+      "content": "---\nname: 导出京东消费记录\ndescription: 当用户要把京东的历史订单/消费记录全部导出成表格（或据此做消费分析）时使用。\nstart_url: https://order.jd.hk/center/list.action\nsites:\n  - order.jd.com\n  - order.jd.hk\n  - jd.com\nkind: task\n---\n\n先把前提一条条核过，缺一条就停下来问用户，别硬跑：\n1. 用户已在浏览器里登录京东（能正常看到订单列表）。没登录就让用户自己登，不要碰账号密码。\n2. 能进订单中心列表页 order.jd.com/center/list.action（会被跳到 order.jd.hk，正常）。\n3. 页头昵称是用户本人的账号；有多个京东账号时先确认是哪一个，避免导错人。\n4. 问清范围：全部历史（默认，按年循环）还是近 3 个月 / 某一年；要 CSV 还是要分析结论。\n\n抓取流程：\n1. 自己开一个 agent 标签页到 order.jd.hk/center/list.action，别抢占用户正在看的标签；开 network 录制后 reload。\n2. 从录到的请求里取一条 `functionId=pcorder_center_list` 的 POST 完整 URL（带 x-api-eid-token、h5st、t）。这串就是签名，全程复用；只改 body，绝不要改 `t`，改了签名立刻失效。\n3. 在页面里 fetch 这串 URL：`Content-Type: application/x-www-form-urlencoded`，body 为 `'body=' + encodeURIComponent(JSON.stringify({page, s:4096, d}))`。`d` 传年份字符串（如 \"2025\"），`s=4096` = 全部状态，每页固定 20 条。\n4. 年份 2013→今年逐年循环，page 从 1 翻到 orderList 为空或总数够为止。**坑**：`d` 传一个没有订单的无效年份会静默回退成「近 3 个月」列表，所以必须按 orderId 全局去重。\n5. 别在一次 evaluate 里跑完全部年份（默认 10s 超时会被打断）：先把 `window.__jdFetch(d)` 装进页面，然后每次 evaluate 只跑一年。\n6. 拆单按 parentId 合并成一个订单：金额取 `parentOrderList[parentId].shouldPay`，没有父单记录才回退到子单 `itemPayInfo.shouldPay`（>0 才用），否则会漏算或重复算；店铺、状态、商品从子单取。\n7. 导出 3 个 CSV，都要带 `\\ufeff` BOM（否则 Excel 打开乱码）：订单全量（一行一单，含商品明细串）、商品明细（一行一商品）、年度汇总（有效单/取消单/实付/客单价）。用页面里 `new Blob` + `a.download` 落到 ~/Downloads，下完用 ffprobe 之类确认文件真的存在。\n8. 汇报时给清口径：时间跨度、有效单数、取消单数、实付合计、各年趋势；并说明用 E 卡/京豆/权益支付的单实付显示 0，真实花费会略高。顺便看一眼订单回收站（order.jd.hk/center/recycle.action，同一个接口），有已删除订单要问用户是否并入。\n"
+    },
+    {
+      "id": "web-to-markdown",
+      "name": "Web to Markdown",
+      "description": "Save a web page as a Markdown file. Use when the user asks to save, clip, archive or export a page, or to read it as Markdown.",
+      "updated": "2026-11-01T17:20:18.000Z",
+      "sha256": "414e5e5c3819de590999b18b510930b83723f1e8db6e98ff3603e1acc3dc2f47",
+      "content": "---\nname: Web to Markdown\ndescription: Save a web page as a Markdown file. Use when the user asks to save, clip, archive or export a page, or to read it as Markdown.\n---\n\nRead the page with BrowserMCP (`tab.read()`, following `r.next` until complete; reuse the user's open tab rather than opening a duplicate). Write clean Markdown yourself: keep headings, lists, code blocks with their language, tables, links and images with absolute URLs; drop navigation, sidebars, comments, recommendations and banners. Start with frontmatter: title, source, fetched (author and published when shown).\n\nSave it with `save_file` under the title as the file name (where the user said, else the default folder). Reply with the path and one line about the page — not the Markdown.\n\nIf the page is a sign-in or consent wall or nearly empty, don't invent content: ask the user to sign in in that tab and retry. One file per page; several pages also get an `index.md`.\n"
+    },
+    {
+      "id": "xiaohongshu-limit-check",
+      "name": "小红书防限流自检",
+      "description": "在小红书发布或修改笔记前（尤其是 AI／产品类笔记）做一次防限流自检，避免因站外信息、引导性或索取互动的措辞、敏感词被判「未通过」或限制推荐。",
+      "sites": [
+        "xiaohongshu.com",
+        "creator.xiaohongshu.com"
+      ],
+      "start_url": "https://creator.xiaohongshu.com/new/note-manager?source=official",
+      "kind": "task",
+      "updated": "2026-11-20T10:22:18.662Z",
+      "sha256": "5fc63bd556c0655e99fa97ec663e2e359eac5f784538d068b029b2190018d449",
+      "content": "---\nname: 小红书防限流自检\ndescription: 在小红书发布或修改笔记前（尤其是 AI／产品类笔记）做一次防限流自检，避免因站外信息、引导性或索取互动的措辞、敏感词被判「未通过」或限制推荐。\nstart_url: https://creator.xiaohongshu.com/new/note-manager?source=official\nsites:\n  - xiaohongshu.com\n  - creator.xiaohongshu.com\nkind: task\n---\n\n目标：每条笔记发出去都能进推荐、能被搜到。发前 30 秒过一遍下面这份清单——被罚过多次的都是同一类问题，别靠感觉发。\n\n零、最重要的一条：正文不写任何引导性的话（最常犯的错）\n1. 不引导读者去别处：不给网址（含 github.com、短链、自建站）、邮箱、手机号、微信／QQ／VX／威信／🛰 等变形、邀请码、二维码、不明数字串；不写「私信我拿…」「主页／简介有」「看置顶」「去 GitHub 搜…」「加群」。\n2. 也不索取互动：「评论区说说你怎么看」「扣 1」「点赞过百就出教程」「关注我蹲下一条」「收藏起来别丢了」「转发给你朋友」——这类祈使句、提问式钩子、以互动换内容，都算诱导，容易再被判。\n3. 写的时候用陈述句，不出现指向读者的祈使句。产品名、平台名当事实提可以（「开源在 GitHub」），但不给链接、账号，也不让读者去找。\n4. 结尾就自然收住：一句自己的判断或感受就够了，把话说完，不提问、不邀约、不承诺「下一条讲什么」。\n\n一、图片（被罚最多的地方）\n5. 任何截图里不能出现其他平台的痕迹：X／微博／抖音的 logo 和界面、头像、用户名 @handle、时间戳与「来自 iPhone」、t.co 短链、浏览量／点赞数、「Show more」。\n6. 推文、网页不要直接截原页面当封面。把文字重排成 1080x1440 白底图（大字标题 + 引用体正文），信息不变、来源痕迹为零。\n7. 已经截好了：用发布页「AI 智能修图 → 帮我去除画面上的干扰元素」，或用色块整块盖住头像／用户名／logo，别只裁一点点（残角也会被判）。\n8. 图里也不能有二维码、微信号、群口令、邀请码、下载页地址、App 图标旁的「扫码」。\n\n二、标题与用词\n9. 不用极限词和承诺：最／第一／唯一／永久免费／100%／彻底解决／封神／稳赚；不碰医疗功效、投资收益。\n10. 同一篇内容别改个标题反复发（判同质化），一天也别连发多条同主题；纯 AI 生成或搬运的图文按创作声明标注。\n\n三、发布与发布后\n11. 图和文案定稿再发：发布后每改一次都会重新审核，反复改会叠加低质判定。\n12. 发完在笔记管理看状态，「审核中」→「已发布」才算过。出现「未通过」先点「查看修改建议」读处置详情里的「存在问题」。\n13. 只改它指出的那一项，别整篇重写。被判「图片违规／外部平台信息」时：只换封面图，标题正文原样保留（正文没问题，乱改反而伤好内容）。\n14. 被判后不要删除原样重发；改完隔开一段时间再发，标题和正文也换掉一部分。\n15. 有异议走 App「帮助与客服 → 笔记申诉」。\n\n自检口诀：图里无别家、正文无链接、不收互动、用词不绝对、内容不重复。\n"
+    }
+  ]
+}
