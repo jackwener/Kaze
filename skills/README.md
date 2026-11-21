@@ -11,6 +11,7 @@ is kept up to date until you edit it, and an edited one is never overwritten.
 | [`xiaohongshu-limit-check`](xiaohongshu-limit-check/SKILL.md) | 小红书发笔记前的防限流自检 |
 | [`export-jd-orders`](export-jd-orders/SKILL.md) | 导出京东全部历史订单为表格 |
 | [`export-alipay-bills`](export-alipay-bills/SKILL.md) | 导出支付宝全部账单为表格 |
+| [`export-taobao-orders`](export-taobao-orders/SKILL.md) | 导出淘宝/天猫全部历史订单为表格 |
 
 They're written for Kaze's agent: they read pages through [BrowserMCP](https://github.com/jackwener/BrowserMCP)
 (`tab.read()`) and write with Kaze's `save_file`. Another agent with BrowserMCP can use them with
