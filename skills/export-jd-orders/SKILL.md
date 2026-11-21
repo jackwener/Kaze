@@ -1,6 +1,6 @@
 ---
 name: 导出京东消费记录
-description: 当用户要把京东的历史订单/消费记录全部导出成表格（或据此做消费分析）时使用。
+description: 把京东的全部历史订单导出成一张表格，可以直接拿来做消费分析。用户要导出京东订单或消费记录时使用。
 start_url: https://order.jd.hk/center/list.action
 sites:
   - order.jd.com
